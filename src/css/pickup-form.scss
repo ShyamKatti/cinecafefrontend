@@ -1,0 +1,40 @@
+.pickUpBody {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+
+    .optionTitleRow {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 2em;
+    }
+
+    .bookingIdRow, .screen-id-row {
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: flex-start;
+
+
+        .field-label {
+            text-align: left;
+            width: 40%;
+            font-weight: 500;
+        }
+
+        .booking-input, .screen-input {
+            text-align: right;
+            width: 60%;
+        }
+    }
+
+    .screen-id-row {
+        margin-top: 2em;
+    }
+
+    .confirm-btn-row {
+        margin-top: 2em;
+        text-align: center;
+    }
+}

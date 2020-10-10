@@ -1,0 +1,76 @@
+img {
+    position: relative;
+    bottom:0;
+    top:0;
+    float:left;
+    width: 35%;
+    height: 100%;
+    margin-right: 1em;
+    box-sizing: border-box;
+    border-radius: 10%;
+  }
+
+  .round-image {
+    border-radius: 25px;
+    border: none;
+  }
+
+    .item-card {
+        display: flex;
+        flex-flow: row wrap;
+        width: 100%;
+        margin: 2em;
+    }
+  
+
+.item-label{
+    text-transform: uppercase;
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: 0.1em;
+    font-size: 1.8em;
+    color: #0F0F10;
+}
+
+.item-info {
+    width: 60vw;
+    font-family: ProximaNova,Arial,Helvetica Neue,sans-serif;
+}
+
+.ingredient {
+  display: inline-table;
+  vertical-align: top;
+  padding-right: 1%;
+}
+
+.non-veg-icon {
+  margin-left: 1%;
+  width: 15px;
+  height: 15px;
+  line-height: 1.2;
+  float:left;
+}
+
+#quantity {
+  margin-left: .6rem;; 
+  margin-right: .6rem;; 
+  background-color: #E5EBF2;
+}
+#quantity ::after{
+  background-color:#748A9D;
+}
+#cart-items {
+  margin-left: .6rem;; 
+  margin-right: .6rem;
+}
+
+.item-description {
+    font-family: inherit;
+    font-size: 1.2em;
+    margin-top: 0.5em;
+}
+
+.price-label {
+    font-family: inherit;
+    font-size: 1.33em;
+}

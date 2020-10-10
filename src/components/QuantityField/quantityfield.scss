@@ -1,0 +1,39 @@
+.editable-quantity-field {
+    display: flex;
+    flex-flow: row nowrap;
+    width: 25vw;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid #D4D5DE;
+    background-color: #ffffff;
+    height: 30px;
+    margin-top: 1.85em;
+    margin-left: 0.5em;
+
+    .editable-field-add-btn, .editable-field-subtract-btn {
+        cursor: pointer;
+        border: none;
+        background-color: transparent;
+        padding-top: 0;
+        padding-bottom: 5px;
+        outline: none;
+    }
+
+    .editable-field-add-btn {
+        color: green;
+    }
+
+    .editable-field-subtract-btn {
+        color: lightgrey;
+    }
+
+    .input-quantity-container {
+        font-size: 1.4em;
+        font-weight: 600;
+
+        .add-value {
+            color: green;
+        }
+    }
+
+}

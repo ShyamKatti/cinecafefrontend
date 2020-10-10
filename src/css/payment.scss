@@ -1,0 +1,26 @@
+.payment-gateway-section {
+    margin-top: 1em;
+    height: 5em;
+    text-align: center;
+
+    .payment-button {
+        text-align: center;
+
+        .pay-btn {
+            border: none;
+            background: #60b246;
+            margin-top: 1em;
+            width: 8em;
+            height: 2em;
+            font-weight: bold;
+            font-size: 1.3em;
+            text-transform: uppercase;
+
+            .total-amount-value {
+                &:before {
+                    content: ' \20B9';
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,196 @@
+
+body {
+  color: #4527a0;
+  background-color: #f4f4f5;
+  background-size: cover;
+  height: 100;
+  width: 100;
+  position: 'relative';
+  top: 0;
+  left: 0
+}
+
+.container {
+    display: flex;
+    flex-flow: column nowrap;
+    padding: 0;
+    width: 100vw;
+    height: 100vh
+}
+
+.submitButton {
+  background-color: #320b86;
+  color: white;
+  padding: 10;
+  margin: 15;
+  height: 40;
+  border-radius: 25;
+}
+.submitButton:hover {
+  background-color: lightgray;
+  color: #320b86 ;
+  padding: 10;
+  margin: 15;
+  height: 40;
+  border-radius: 25;
+}
+
+.searchBox {
+  padding-left: 10;
+  margin-bottom: 10;
+  border-style: solid;
+  border-radius: 10;
+  border-width: 1;
+  border-color: lightgrey
+}
+
+.nav-shopping-cart {
+  width: 50px;
+  height: 50px;
+}
+
+#cart-items{
+  float: right;
+  margin-right: 1%  ;
+  font-size: 20px;
+  color: purple;
+}
+
+.btnLanding{
+  width: 200px;
+  height: 56pt;
+  border: 3px solid #12005C;
+  background-color: #F0F4F8;
+  cursor: pointer;
+  border-radius: 8px;
+  margin: 20px;
+}
+
+#landingPage{
+  margin: 20px;
+  margin-top:50px;
+}
+#seatServerForm , #pickOrderForm {
+  margin: 10px;
+  padding: 10px;
+  width: 80%;
+}
+.homelabel{
+
+  font-size: 20px;
+  color: #12005C;
+  width: 150px;
+  height: 20px;
+  text-align: center;
+}
+.homelabel2{
+
+  font-size: 20px;
+  color: #F0F4F8;
+  width: 150px;
+  height: 20px;
+  text-align: center;
+}
+
+.navigation-container {
+    padding-top: 10px;
+}
+
+.Nav__container {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    width: 100vw;
+}
+
+.Nav__brand_logo {
+    margin-left: 15px;
+    img {
+        width: 75px;
+        height: 50px;
+    }
+}
+
+.nav-shopping-cart {
+    img {
+        width: 30px;
+        height: 30px;
+    }
+}
+
+.menuCard{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+/****************************
+        SHYAM CSS CHANGES
+ ****************************/
+.landing-page-body {
+    height: 80vh;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: space-evenly;
+    align-items: center;
+
+    .action-pickup, .action-serve {
+        .pickup, .seat-serve {
+            width: 50vw;
+            height: 10vh;
+        }
+    }
+}
+
+.landing-page-body-hidden {
+    display: none;
+}
+
+.selected-action-body {
+    height: 80vh;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+
+    .optionTitleRow {
+        margin-bottom: 2em;
+    }
+
+    .confirm-btn-row {
+        margin-top: 2em;
+    }
+}
+
+.selected-action-body-hidden {
+    display: none;
+}
+
+.fixed-sub-container {
+    position: fixed;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin-bottom: 4em;
+    border-bottom: 1px solid lightgrey;
+    background-color: white;
+    z-index: 6;
+    height: 35vh;
+}
+
+.menu-items-content {
+    position: relative;
+    z-index: 0;
+    margin-top: 36vh;
+    height: 65vh;
+}
+
+.categoryHeader {
+    font-size: 2.5em;
+    margin-left: 0.5em;
+}

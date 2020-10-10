@@ -1,0 +1,301 @@
+[
+    
+    {
+        "category": "Beverages",
+        "id": 1,
+        "title": "Coke 650ml (Coke)",
+        "image": "https://cdn.shopify.com/s/files/1/0419/1866/0759/products/210000010964_589eccd1-f58e-4d5d-b9f2-7f1cae87a57b_360x.jpg?v=1598284353",
+        "description": "Soda. Pop. Soft drink. Sparkling beverage.",
+        "labels": ["sugar", "caffeine"],
+        "vegOnly": true,
+        "price": 180, 
+        "quantity": 0
+    },
+    {
+        "category": "Beverages",
+        "id": 2,
+        "title": "Coke 650ml (Thumpsup)",
+        "image": "https://cdn.shopify.com/s/files/1/0419/1866/0759/products/210000010964_589eccd1-f58e-4d5d-b9f2-7f1cae87a57b_360x.jpg?v=1598284353",
+        "description": "Soda. Pop. Soft drink. Sparkling beverage.",
+        "labels": ["sugar", "caffeine"],
+        "vegOnly": true,
+        "price": 180, 
+        "quantity": 0
+    },
+    {
+        "category": "Beverages",
+        "id": 3,
+        "title": "Coke 650ml (Fanta/Sprite)",
+        "image": "https://cdn.shopify.com/s/files/1/0419/1866/0759/products/210000010964_589eccd1-f58e-4d5d-b9f2-7f1cae87a57b_360x.jpg?v=1598284353",
+        "description": "Soda. Pop. Soft drink. Sparkling beverage.",
+        "labels": ["sugar", "caffeine"],
+        "vegOnly": true,
+        "price": 180, 
+        "quantity": 0
+    },
+
+    {
+        "category": "Beverages",
+        "id": 4,
+        "title": "Paperboat",
+        "image": "",
+        "description": "exceptionally tasty and thick juice.",
+        "labels": ["sugar", "water", "stabilizer (pectin)"],
+        "vegOnly": true,
+        "price": 120, 
+        "quantity": 0
+    },
+    {
+        "category": "Beverages",
+        "id": 5,
+        "title": "Appy Fizz",
+        "image": "",
+        "description": "Soda. Pop. Soft drink. Sparkling beverage.",
+        "labels": ["sugar", "caffeine"],
+        "vegOnly": true,
+        "price": 60, 
+        "quantity": 0
+    },
+    {
+        "category": "Beverages",
+        "id": 6,
+        "title": "Frooti",
+        "image": "",
+        "description": "Soda. Pop. Soft drink. Sparkling beverage.",
+        "labels": ["sugar", "juice", "water"],
+        "vegOnly": true,
+        "price": 60, 
+        "quantity": 0
+    },
+    {
+        "category": "Beverages",
+        "id": 7,
+        "title": "Diet Coke",
+        "image": "",
+        "description": "Soda. Pop. Soft drink. Sparkling beverage.",
+        "labels": ["sugar", "caffeine"],
+        "vegOnly": true,
+        "price": 60, 
+        "quantity": 0
+    },
+    {
+        "category": "Beverages",
+        "id": 8,
+        "title": "MinuteMaid Pulpy",
+        "image": "",
+        "description": "Thick and tasty juice",
+        "labels": ["sugar", "juice", "water"],
+        "vegOnly": true,
+        "price": 70, 
+        "quantity": 0
+    },
+    {
+        "category": "Beverages",
+        "id": 9,
+        "title": "Water",
+        "image": "",
+        "description": "Bottled water",
+        "labels": [ "water"],
+        "vegOnly": true,
+        "price": 60, 
+        "quantity": 0
+    },
+    {
+        "category": "Beverages",
+        "id": 10,
+        "title": "Redbull",
+        "image": "",
+        "description": "Caffeinated Drink Energizer",
+        "labels": [ "water", "caffeine", "sugar"],
+        "vegOnly": true,
+        "price": 160, 
+        "quantity": 0
+    },
+    {
+        "category": "Beverages",
+        "id": 11,
+        "title": "Cuppacino",
+        "image": "",
+        "description": "Caffeinated Drink",
+        "labels": [ "water", "caffeine", "sugar"],
+        "vegOnly": true,
+        "price": 140, 
+        "quantity": 0
+    },
+    {
+        "category": "Beverages",
+        "id": 12,
+        "title": "Cafe Latte",
+        "image": "",
+        "description": "Caffeinated Drink ",
+        "labels": [ "water", "caffeine", "sugar","milk"],
+        "vegOnly": true,
+        "price": 140, 
+        "quantity": 0
+    },
+    {
+        "category": "Beverages",
+        "id": 13,
+        "title": "Black Coffee",
+        "image": "",
+        "description": "Caffeinated Drink ",
+        "labels": [ "water", "caffeine", "sugar"],
+        "vegOnly": true,
+        "price": 140, 
+        "quantity": 0
+    },
+    {
+        "category": "Beverages",
+        "id": 14,
+        "title": "Tea",
+        "image": "",
+        "description": "Caffeinated Drink ",
+        "labels": [ "water", "caffeine", "sugar","milk"],
+        "vegOnly": true,
+        "price": 140, 
+        "quantity": 0
+    },
+    {
+        "category": "Dessert",
+        "id": 15,
+        "title": "Magnum Ice Cream",
+        "image": "",
+        "description": "Ice Cream ",
+        "labels": [ "chocolate", "diary", "sugar"],
+        "vegOnly": true,
+        "price": 90, 
+        "quantity": 0
+    },
+    {
+        "category": "Dessert",
+        "id": 16,
+        "title": "Pastry",
+        "image": "",
+        "description": "Butterly Chocolate Puffs",
+        "labels": [ "chocolate", "butter", "sugar","eggs"],
+        "vegOnly": false,
+        "price": 120, 
+        "quantity": 0
+    },
+    {
+        "category": "Dessert",
+        "id": 17,
+        "title": "Walnut Brownie",
+        "image": "",
+        "description": "Bakery",
+        "labels": [ "nuts", "chocolate", "sugar","eggs"],
+        "vegOnly": false,
+        "price": 150, 
+        "quantity": 0
+    },
+    {
+        "category": "Dessert",
+        "id": 18,
+        "title": "Death By chocklate",
+        "image": "",
+        "description": "Bakery",
+        "labels": [ "flour", "chocolate", "sugar","eggs"],
+        "vegOnly": false,
+        "price": 220, 
+        "quantity": 0
+    },
+    {
+        "category": "Pizza",
+        "id": 19,
+        "title": "Veg Pizza",
+        "image": "",
+        "description": "Cheesy crust Veggie pizza",
+        "labels": [ "cheese", "veggies", "bread","mushroom"],
+        "vegOnly": true,
+        "price": 290, 
+        "quantity": 0
+    },
+    {
+        "category": "Pizza",
+        "id": 20,
+        "title": "Chicken Pizza",
+        "image": "",
+        "description": "Butter Chicken pizza thin crust ",
+        "labels": [ "cheese", "veggies", "bread", "chicken"],
+        "vegOnly": false,
+        "price": 350, 
+        "quantity": 0
+    },
+    {
+        "category": "Sandwich",
+        "id": 21,
+        "title": "Veg Cheese S/W",
+        "image": "",
+        "description": "Delicious Cheeese goodness..",
+        "labels": [ "cheese", "veggies", "bread","mushroom"],
+        "vegOnly": true,
+        "price": 170, 
+        "quantity": 0
+    },
+    {
+        "category": "Sandwich",
+        "id": 22,
+        "title": "Chilli Toast",
+        "image": "",
+        "description": "Chilli Toast",
+        "labels": [ "cheese", "veggies", "bread","mushroom"],
+        "vegOnly": true,
+        "price": 170, 
+        "quantity": 0
+    },
+    {
+        "category": "Sandwich",
+        "id": 23,
+        "title": "Veg DD S/W",
+        "image": "",
+        "description": "Veg DD S/W",
+        "labels": [ "cheese", "veggies", "bread"],
+        "vegOnly": true,
+        "price": 200, 
+        "quantity": 0
+    },
+    {
+        "category": "Sandwich",
+        "id": 24,
+        "title": "Chicken Grill S/W",
+        "image": "",
+        "description": "Chicken Grill S/W",
+        "labels": ["chicken", "bread"],
+        "vegOnly": false,
+        "price": 180, 
+        "quantity": 0
+    },
+    {
+        "category": "Sandwich",
+        "id": 25,
+        "title": "Chicken Tikka S/W",
+        "image": "",
+        "description": "Chicken Tikka S/W",
+        "labels": [ "chicken",  "bread"],
+        "vegOnly": false,
+        "price": 180, 
+        "quantity": 0
+    },
+    {
+        "category": "Sandwich",
+        "id": 26,
+        "title": "Chicken DD S/W",
+        "image": "",
+        "description": "Chicken DD S/W",
+        "labels": [ "chicken", "bread"],
+        "vegOnly": false,
+        "price": 230, 
+        "quantity": 0
+    },
+    {
+        "category": "Dessert",
+        "id": 27,
+        "title": "Cup Cake",
+        "image": "",
+        "description": "Cupcake",
+        "labels": [ "sugar", "eggs"],
+        "vegOnly": true,
+        "price": 230, 
+        "quantity": 0
+    }
+]

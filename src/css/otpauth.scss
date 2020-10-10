@@ -1,0 +1,80 @@
+.otp-authentication-section {
+    display: flex;
+    height: 100%;
+    flex-flow: column nowrap;
+    text-align: center;
+    background: #ffffff;
+
+    .section-header {
+        display: flex;
+        min-height: 25vh;
+        flex-flow: column wrap;
+        align-items: flex-start;
+        color: #282c3f;
+        background-color: #F2F4F9;
+        justify-content: flex-end;
+
+        .section-title {
+            font-size: 2em;
+            padding-left: 1em;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        .section-subtitle {
+            padding-left: 1em;
+            font-size: 1.2em;
+
+        }
+    }
+
+    .section-body {
+        padding: 1em;
+        font-size: 2em;
+        color: #282c3f;
+        min-height: 75vh;
+        background-image: url('/shutterstock_482053549.jpg');
+        -webkit-background-size: contain;
+        background-size: contain;
+
+        fieldset {
+            text-align: left;
+        }
+
+        legend {
+            font-size: 1em;
+        }
+
+        input {
+            width: 100%;
+        }
+
+        input:invalid {
+            border: 1px solid red;
+        }
+
+        .contact-cta-button {
+            background-color: #4169e1;
+            margin-top: 1em;
+            width: 30vw;
+            height: 6vh;
+            font-size: 1em;
+            font-weight: 600;
+        }
+
+        .otp-fieldset-hidden {
+            display: none;
+        }
+
+        .otp-fieldset-show {
+            display: block;
+            transition: top 2s ease-in-out;
+        }
+
+        .error-phone-validation {
+            margin-top: 0.5em;
+            font-size: 1em;
+            color: red;
+        }
+    }
+}

@@ -1,0 +1,59 @@
+.seat-serve-body {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+
+    .bookingIdRow {
+        display: flex;
+        flex-flow: row nowrap;
+        width: 80%;
+
+        .field-label {
+            text-align: left;
+            width: 40%;
+            font-weight: 500;
+        }
+
+        .booking-input {
+            text-align: right;
+            width: 60%;
+        }
+    }
+
+    .screen-selector-row {
+        display: flex;
+        flex-flow: row nowrap;
+        width: 80%;
+        margin-top: 1em;
+
+        .field-label {
+            text-align: left;
+            width: 40%;
+            font-weight: 500;
+        }
+
+        .select-box {
+            width: 60%;
+        }
+    }
+
+    .seat-id-row {
+        display: flex;
+        flex-flow: row nowrap;
+        width: 80%;
+        margin-top: 1em;
+
+        .field-label {
+            text-align: left;
+            width: 40%;
+            font-weight: 500;
+        }
+
+        .seat-input-field {
+            text-align: right;
+            width: 60%;
+        }
+    }
+}

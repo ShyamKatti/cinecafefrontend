@@ -1,0 +1,16 @@
+#filter-text {
+    display: inline !important;
+}
+
+.category-btn {
+    /* background-color: lavender;
+    color: purple; */
+    width: 40px; 
+    height:38px;
+    color: pink;
+}
+
+.filterMenu{
+    /*position: fixed;*/
+    top:120px;
+}
