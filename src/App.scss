@@ -10,12 +10,15 @@ body {
   left: 0
 }
 
-.container {
+.main-container {
     display: flex;
     flex-flow: column nowrap;
     padding: 0;
     width: 100vw;
-    height: 100vh
+    height: 100vh;
+    background-image: url('/shutterstock_482053549.jpg');
+    -webkit-background-size: contain;
+    background-size: contain;
 }
 
 .submitButton {
@@ -93,7 +96,13 @@ body {
 }
 
 .navigation-container {
-    padding-top: 10px;
+    .solid-bar {
+        width: 100vw;
+        height: 3vh;
+        background-color: #12065C;
+        z-index: 10;
+        margin-bottom: 1rem;
+    }
 }
 
 .Nav__container {
@@ -106,15 +115,16 @@ body {
 .Nav__brand_logo {
     margin-left: 15px;
     img {
-        width: 75px;
+        width: 95px;
         height: 50px;
     }
 }
 
 .nav-shopping-cart {
+    margin-right: 1rem;
     img {
-        width: 30px;
-        height: 30px;
+        width: 10vw;
+        height: 10vw;
     }
 }
 
@@ -139,6 +149,11 @@ body {
         .pickup, .seat-serve {
             width: 50vw;
             height: 10vh;
+            background-color: rgba(240, 244, 248, 0.5);
+            border: 2px solid #12005C;
+            color: #12005C;
+            font-size: 2rem;
+            font-weight: 600;
         }
     }
 }
@@ -153,13 +168,24 @@ body {
     flex-flow: column nowrap;
     justify-content: center;
     align-items: center;
+    font-size: 2rem;
 
     .optionTitleRow {
         margin-bottom: 2em;
+        h2 {
+            font-size: 3rem;
+        }
     }
 
     .confirm-btn-row {
         margin-top: 2em;
+
+        button {
+            width: 22vw;
+            height: 4vh;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
     }
 }
 
@@ -188,6 +214,7 @@ body {
     z-index: 0;
     margin-top: 36vh;
     height: 65vh;
+    background-color: #ffffff;
 }
 
 .categoryHeader {

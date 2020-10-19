@@ -9,7 +9,7 @@ function SearchBox({ handleSearchChange }) {
         <label>
           <span className="searchIcon" />
           <input
-          className="form-control"
+          className="search-input-field"
           type="search"
           placeholder="Search your favorite food..."
           aria-label="Search"

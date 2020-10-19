@@ -8,6 +8,7 @@ class NavBar extends Component {
     render() {
         return (
             <div className="navigation-container">
+                <div className="solid-bar"></div>
                 <nav className="Nav">
                     <div className="Nav__container">
                         <NavLink to="/" className="Nav__brand_logo">

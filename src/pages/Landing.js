@@ -86,7 +86,7 @@ class LandingPage extends Component {
 
     render() {
         return (
-            <div className="container">
+            <div className="main-container">
                 <NavBar />
                 <div className={!this.state.showSeatServe && !this.state.showPickOrder ? "landing-page-body" : "landing-page-body-hidden"}>
                     <div className="action-pickup">
@@ -100,7 +100,7 @@ class LandingPage extends Component {
                 </div>
                 <div className={this.state.showSeatServe || this.state.showPickOrder ? "selected-action-body" : "selected-action-body-hidden"}>
                     <div className="optionTitleRow">
-                        <h3>Order Details</h3>
+                        <h2>Order Details</h2>
                     </div>
                     <ActionBody isPickupSelected={ this.state.showPickOrder }
                                 isSeatServeSelected={ this.state.showSeatServe }

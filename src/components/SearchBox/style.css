@@ -1,7 +1,6 @@
 .searchbox input {
     border: 1px solid #12005C;
     border-radius: 10px;
-    width: 330px;
 }
 
 .searchbox button:hover {
@@ -19,6 +18,10 @@
 
 /* Sticky Searchbox */
 .searchbox{
-    /*position:fixed; */
-    margin:10px;
+    margin: 10px;
+}
+
+.search-input-field {
+    width: 90vw;
+    font-size: 1.5rem;
 }

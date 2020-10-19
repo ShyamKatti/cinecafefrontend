@@ -78,6 +78,10 @@ export default function OTPAuthenticator() {
         <CookiesProvider>
             <div className="otp-authentication-section">
                 <div className="section-header">
+                    <div className="solid-header-bar"></div>
+                    <div className="bmx-logo">
+                        <img src="/assets/images/bmx_logo.png" id="logoIcon" alt="Balaji Logo" />
+                    </div>
                     <div className="section-title">
                         Login
                     </div>
