@@ -16,9 +16,12 @@ body {
     padding: 0;
     width: 100vw;
     height: 100vh;
+    //Background image for landing page 
+    background-color: #ffffff;
     background-image: url('/shutterstock_482053549.jpg');
-    -webkit-background-size: contain;
+    background-position: center;
     background-size: contain;
+    -webkit-background-size: contain;
 }
 
 .submitButton {
@@ -45,11 +48,6 @@ body {
   border-radius: 10;
   border-width: 1;
   border-color: lightgrey
-}
-
-.nav-shopping-cart {
-  width: 50px;
-  height: 50px;
 }
 
 #cart-items{
@@ -94,6 +92,9 @@ body {
   height: 20px;
   text-align: center;
 }
+.checkout-content {
+ border-top: 25px solid #12065C;
+}
 
 .navigation-container {
     .solid-bar {
@@ -108,24 +109,60 @@ body {
 .Nav__container {
     display: flex;
     flex-flow: row nowrap;
-    justify-content: space-between;
+    justify-content: center;
     width: 100vw;
 }
 
 .Nav__brand_logo {
-    margin-left: 15px;
     img {
-        width: 95px;
+        width: 100px;
         height: 50px;
+        margin-top: 0.9rem;
     }
 }
 
+//Style 1 example 
 .nav-shopping-cart {
-    margin-right: 1rem;
-    img {
-        width: 10vw;
-        height: 10vw;
+  position: relative;
+
+    .icon-container {
+        position: relative;
+
+        img {
+            width: 40px;
+            height: 40px;
+        }
     }
+
+    .overlay-items-nd {
+        display: none;
+    }
+
+    .icon-overlay-items {
+        position: absolute;
+        z-index: 10;
+        font-weight: 900;
+        width: 2rem;
+        height: 2rem;
+        -webkit-border-radius: 50%;
+        -moz-border-radius: 50%;
+        border-radius: 50%;
+        background-color: #ffffff;
+        margin-left: 0.5rem;
+        margin-top: 0.5rem;
+
+        .icon-quantity-overlay {
+            font-size: 1rem;
+            color: #84639B;
+            z-index: 20;
+            margin-left: 0.9rem;
+        }
+    }
+}
+//End of Style 1 example 
+.no-result-message {
+  font-family: 'Artifika', serif;
+  color: purple;
 }
 
 .menuCard{
@@ -146,16 +183,32 @@ body {
     align-items: center;
 
     .action-pickup, .action-serve {
-        .pickup, .seat-serve {
+        .pickup, .seat-serve{
             width: 50vw;
             height: 10vh;
-            background-color: rgba(240, 244, 248, 0.5);
             border: 2px solid #12005C;
-            color: #12005C;
-            font-size: 2rem;
-            font-weight: 600;
+            border-radius: 8px;
+            color: #12005C; 
+            font-weight: 900;
+            font-size: 1.7rem;
+        }
+        .pickup-active, .seat-serve-active{
+            width: 50vw;
+            height: 10vh;
+            border: 2px solid #F0F4F8;
+            border-radius: 8px;
+            background-color: #12005C;
+            color: #F0F4F8
         }
     }
+}
+.btn-confirm {
+  width: 40vw;
+  height: 5vh;
+  border: 2px solid #12005C;
+  border-radius: 8px;
+  color: #12005C; 
+  font-weight: 900;
 }
 
 .landing-page-body-hidden {
@@ -168,7 +221,7 @@ body {
     flex-flow: column nowrap;
     justify-content: center;
     align-items: center;
-    font-size: 2rem;
+    font-size: 1.5rem;
 
     .optionTitleRow {
         margin-bottom: 2em;
@@ -202,22 +255,77 @@ body {
     top: 0;
     left: 0;
     right: 0;
-    margin-bottom: 4em;
     border-bottom: 1px solid lightgrey;
     background-color: white;
     z-index: 6;
-    height: 35vh;
+    height: 36vh;
+    // top purple color bar above navigation
+    border-top: 25px solid #12005C;
 }
 
 .menu-items-content {
     position: relative;
     z-index: 0;
-    margin-top: 36vh;
-    height: 65vh;
+    margin-top: 33vh;
+    min-height: 65vh;
     background-color: #ffffff;
+    background-image: url('/shutterstock_482053549.jpg');
+    background-position: center;
+    background-size: contain;
+    -webkit-background-size: contain;
 }
 
 .categoryHeader {
     font-size: 2.5em;
     margin-left: 0.5em;
+    font-weight: 900;
+}
+
+.continue-footer {
+  position: sticky;
+  display: flex;
+  flex-flow: row wrap;
+  bottom: 0;
+  width: 100vw;
+  height: 6vh;
+  float: bottom;
+  font-size: 1.5rem;
+  color: #ffffff;
+  font-weight: 500;
+
+  .left-side-continue {
+    width: 50%;
+    height: inherit;
+    background-color: #008000;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: center;
+
+    .footer-total-items {
+      .quantity-unit-text {
+        margin-left: 0.5rem;
+      }
+    }
+
+    .footer-total-price {
+      &:before {
+        content: '\20B9';
+      }
+    }
+  }
+
+  .right-side-continue {
+    width: 50%;
+    height: inherit;
+
+    .continue-button {
+      width: 100%;
+      height: 100%;
+      border: 0rem;
+      background-color: #008000;
+      color: #ffffff;
+      font-weight: 500;
+    }
+  }
 }

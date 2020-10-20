@@ -297,5 +297,48 @@
         "vegOnly": true,
         "price": 230, 
         "quantity": 0
+    }, 
+
+    {
+        "category": "Wraps",
+        "id": 28,
+        "title": "Shensha Veggie Wrap",
+        "image": "",
+        "description": "Veggie Wrap",
+        "labels": [
+            "veggie",
+            "tortilla"
+        ],
+        "vegOnly": true,
+        "price": 210,
+        "quantity": 0
+    },
+    {
+        "category": "Wraps",
+        "id": 29,
+        "title": "Shakkal Paneer Wrap",
+        "image": "",
+        "description": "Shakkal Paneer Wrap",
+        "labels": [
+            "veggie",
+            "tortilla"
+        ],
+        "vegOnly": true,
+        "price": 210,
+        "quantity": 0
+    },
+    {
+        "category": "Wraps",
+        "id": 30,
+        "title": "Gogo Chicken Wrap",
+        "image": "",
+        "description": "Gogo Chicken Wrap",
+        "labels": [
+            "chicken",
+            "trotilla"
+        ],
+        "vegOnly": false,
+        "price": 210,
+        "quantity": 0
     }
 ]

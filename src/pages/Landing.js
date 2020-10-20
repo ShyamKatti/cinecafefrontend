@@ -39,9 +39,10 @@ class LandingPage extends Component {
             showPickOrder: false
         })
     };
-    handleConfirmBtn = (event) => {
-        window.location.href = '/food';
-    };
+
+    componentDidMount() {
+        localStorage.clear();
+    }
 
     updateBookingId = (value) => {
         this.setState({
@@ -66,7 +67,23 @@ class LandingPage extends Component {
 
     setDetails = (event) => {
         event.preventDefault();
-        console.log(this.state);
+
+        if (this.state.showPickOrder) {
+            localStorage.setItem("deliveryInfo", JSON.stringify({
+              bookingId: this.state.bookingId,
+              screenId: this.state.screenId
+            }));
+            this.props.history.push("/food");
+        } else if (this.state.showSeatServe) {
+            localStorage.setItem("deliveryInfo", JSON.stringify({
+              bookingId: this.state.bookingId,
+              screenId: this.state.screenId,
+              seatNo: this.state.seatNo
+            }));
+            this.props.history.push("/food");
+        } else {
+            // No op
+        }
     };
 
     areDetailsFilled = () => {
@@ -87,14 +104,14 @@ class LandingPage extends Component {
     render() {
         return (
             <div className="main-container">
-                <NavBar />
+                <NavBar showMenu={false} />
                 <div className={!this.state.showSeatServe && !this.state.showPickOrder ? "landing-page-body" : "landing-page-body-hidden"}>
                     <div className="action-pickup">
-                        <button className="btn btn-primary pickup"
+                        <button className={!this.state.showPickOrder ?"btn pickup" : "btn pickup-active"}
                                 onClick={this.handlePickOrderBtn}>Pickup Order</button>
                     </div>
                     <div className="action-serve">
-                        <button className="btn btn-primary seat-serve"
+                        <button className={!this.state.showSeatServe ?   "btn seat-serve" : "btn seat-serve-active"}
                                 onClick={this.handleSeatServeBtn}>Seat Serve</button>
                     </div>
                 </div>
@@ -109,7 +126,7 @@ class LandingPage extends Component {
                                 updateSeatNoFn = { this.updateSeatNumber }
                     />
                     <div className="confirm-btn-row">
-                        <button className="btn btn-primary" onClick={this.setDetails}
+                        <button className=" btn-confirm" onClick={this.setDetails}
                             disabled={this.state.isSubmitDisabled}>Continue</button>
                     </div>
                 </div>

@@ -3,8 +3,16 @@ import './quantityfield.scss';
 import usePrevious from '../../common/use-previous';
 
 
-function QuantityField({onItemQuantityChange, fieldId, maxQuantity=10, minQuantity=0}) {
-    const [quantity, setQuantity] = useState(0);
+function QuantityField({
+        onItemQuantityChange,
+        fieldId,
+        itemName,
+        itemPrice,
+        maxQuantity=10,
+        minQuantity=0,
+        localStorageQuantity=0
+    }) {
+    const [quantity, setQuantity] = useState(localStorageQuantity);
     const prevQuantity = usePrevious(quantity);
 
     const onSubtractBtnClick = (event) => {
@@ -25,9 +33,9 @@ function QuantityField({onItemQuantityChange, fieldId, maxQuantity=10, minQuanti
 
     useEffect(() => {
         if (prevQuantity !== undefined && prevQuantity !== quantity) {
-            onItemQuantityChange(fieldId, quantity);
+            onItemQuantityChange(fieldId, quantity, itemName, itemPrice);
         }
-    }, [quantity, prevQuantity, onItemQuantityChange, fieldId]);
+    }, [quantity, prevQuantity, onItemQuantityChange, fieldId, itemName, itemPrice]);
 
     return (
         <div className="editable-quantity-field">

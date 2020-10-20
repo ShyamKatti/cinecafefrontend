@@ -1,28 +1,7 @@
-import React, {useState} from 'react';
-import {useFinalItemAmount} from '../common/usePriceDetails';
+import React, { useState, useEffect } from 'react';
+import { useFinalItemAmount } from '../common/usePriceDetails';
 import '../css/orderdetails.scss';
-import {PaymentGateway} from './Payment';
-
-const order_dump = [
-    {
-        itemId: '1',
-        itemName: 'Paneer Chilly Wrap',
-        itemQuantity: 1,
-        itemPrice: 19925
-    },
-    {
-        itemId: '2',
-        itemName: 'Chicken Samosa',
-        itemQuantity: 4,
-        itemPrice: 4900,
-    },
-    {
-        itemId: '3',
-        itemName: 'Popcorn',
-        itemQuantity: 2,
-        itemPrice: 9900
-    }
-];
+import { PaymentGateway } from './Payment';
 
 function handleSubtract(event, setQuantity) {
     event.preventDefault();
@@ -38,13 +17,13 @@ function handleSubtract(event, setQuantity) {
 function handleAdd(event, setQuantity) {
     event.preventDefault();
     setQuantity((prevState) => prevState + 1);
-};
+}
 
 
-function OrderItem({singleOrderItem, setTotalFinalPrice}) {
+function OrderItem({ singleOrderItem, setTotalFinalPrice }) {
     const [quantity, setQuantity] = useState(singleOrderItem.itemQuantity);
     const price = singleOrderItem.itemPrice;
-    const totalPrice = useFinalItemAmount(quantity, price, setTotalFinalPrice);
+    const totalPrice = useFinalItemAmount(quantity, price, setTotalFinalPrice, singleOrderItem);
 
     return (
         <div className="order-item">
@@ -53,20 +32,22 @@ function OrderItem({singleOrderItem, setTotalFinalPrice}) {
             </div>
             <div className="order-edit-quantity">
                 <button id={'subtract-quantity-' + singleOrderItem.itemId}
-                        className="glyphicon glyphicon-minus subtract-button"
-                        onClick={(event) => handleSubtract(
-                            event,
-                            setQuantity
-                        )}>
+                    className="glyphicon glyphicon-minus subtract-button"
+                    onClick={(event) => handleSubtract(
+                        event,
+                        setQuantity
+                    )}>
                 </button>
                 <input id={'input-quantity-' + singleOrderItem.itemId} type="number"
-                       min="0" max="10" value={quantity} className="input-quantity-field"/>
+                    min="0" max="10" value={quantity} className="input-quantity-field" readOnly/>
                 <button id={'add-quantity-' + singleOrderItem.itemId}
-                        className="glyphicon glyphicon-plus add-button"
-                        onClick={(event) => {handleAdd(
+                    className="glyphicon glyphicon-plus add-button"
+                    onClick={(event) => {
+                        handleAdd(
                             event,
-                            setQuantity
-                        )}}>
+                            setQuantity, singleOrderItem
+                        )
+                    }}>
                 </button>
             </div>
             <div className="order-total-price">{totalPrice}</div>
@@ -75,14 +56,23 @@ function OrderItem({singleOrderItem, setTotalFinalPrice}) {
 }
 
 function OrderItems() {
-
+    const [cartItems, setCartItems] = useState({});
     const [totalFinalPrice, setTotalFinalPrice] = useState(0);
+
+    useEffect(() => {
+        const localStorageItems = localStorage.getItem("cartItems");
+        if (localStorageItems !== undefined || localStorageItems !== null) {
+            setCartItems(JSON.parse(localStorageItems));
+        } else {
+            setCartItems({});
+        }
+    }, []);
 
     return (
         <div className="order-details">
             <div className="order-items">
                 {
-                    order_dump.map((item) => {
+                    Object.keys(cartItems).length > 0 && cartItems.map((item) => {
                         return <OrderItem
                             singleOrderItem={item}
                             setTotalFinalPrice={setTotalFinalPrice}
@@ -98,7 +88,8 @@ function OrderItems() {
     );
 };
 
-function OrderTotal({totalFinalPrice}) {
+function OrderTotal({ totalFinalPrice }) {
+
     return (
         <PaymentGateway finalAmount={totalFinalPrice} />
     )

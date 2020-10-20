@@ -20,12 +20,13 @@ img {
         flex-flow: row wrap;
         width: 100%;
         margin: 2em;
+        font-family: Acumin Pro SemiCondensed;
     }
   
 
 .item-label{
-    text-transform: uppercase;
-    font-weight: 600;
+    text-transform: capitalize;
+    /* font-weight: 600; */
     line-height: 1;
     letter-spacing: 0.1em;
     font-size: 1.8em;

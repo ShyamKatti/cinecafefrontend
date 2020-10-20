@@ -16,8 +16,9 @@ const ItemCard = (props) => {
                 <span className="price-label">&#8377;{props.price}</span>
                 <p className="item-description">{props.description}</p>
             </div>
-            <QuantityField fieldId={props.id}
-                           onItemQuantityChange={props.onItemQuantityChange} />
+            <QuantityField fieldId={props.id} itemName={props.title} itemPrice={props.price}
+                           onItemQuantityChange={props.onItemQuantityChange}
+                            localStorageQuantity={props.localStorageQuantity}/>
         </div>
     );
 };
