@@ -27,12 +27,19 @@
         color: lightgrey;
     }
 
+    .quantity-ctrl-nd {
+        display: none;
+        width: 0;
+        height: 0;
+    }
+
     .input-quantity-container {
         font-size: 1.4em;
         font-weight: 600;
 
         .add-value {
             color: green;
+            margin-left: 2.5rem;
         }
     }
 

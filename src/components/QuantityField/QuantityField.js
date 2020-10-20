@@ -40,15 +40,15 @@ function QuantityField({
     return (
         <div className="editable-quantity-field">
             <button id={'subtract-btn-' + fieldId}
-                    className="glyphicon glyphicon-minus editable-field-subtract-btn"
+                    className={quantity > 0 ? "glyphicon glyphicon-minus editable-field-subtract-btn" : "quantity-ctrl-nd"}
                     onClick={onSubtractBtnClick}>
             </button>
             <div className="input-quantity-container">
                 {quantity > 0 && <span className="quantity-value">{quantity}</span>}
-                {quantity === 0 && <span className="add-value">ADD</span>}
+                {quantity === 0 && <div className="add-value" onClick={onAddBtnClick}>ADD</div>}
             </div>
             <button id={"add-btn-" + fieldId}
-                    className="glyphicon glyphicon-plus editable-field-add-btn"
+                    className={quantity > 0 ? "glyphicon glyphicon-plus editable-field-add-btn" : "quantity-ctrl-nd"}
                     onClick={onAddBtnClick}>
             </button>
         </div>
