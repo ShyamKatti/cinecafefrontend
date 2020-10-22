@@ -8,9 +8,9 @@ const ItemCard = (props) => {
         <div className="item-card">
             <div className="item-info">
                 <span>{(props.vegOnly) ?
-                    (<img src="/assets/images/vegicon.png" alt="Veg Items" className="non-veg-icon" />)
+                    (<img src="https://s3.ap-south-1.amazonaws.com/balaji.cinecafe/assets/vegicon.png" alt="Veg Items" className="non-veg-icon" />)
                     :
-                    (<img src="/assets/images/non-veg.png" alt="Non-Veg Items" className="non-veg-icon" />)
+                    (<img src="https://s3.ap-south-1.amazonaws.com/balaji.cinecafe/assets/non-veg.png" alt="Non-Veg Items" className="non-veg-icon" />)
                 }<h5 className="item-label">{props.title}</h5>
                 </span>
                 <span className="price-label">&#8377;{props.price}</span>

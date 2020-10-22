@@ -17,7 +17,8 @@ function NavBar({totalCount, showMenu}) {
                 <div className="Nav__container">
                   {showMenu ? <HamburgerMenu /> : <label /> }
                     <NavLink to="/" className="Nav__brand_logo">
-                        <img src="/assets/images/bmx_logo.png" id="logoIcon" alt="Balaji Logo" />
+                        <img src="https://s3.ap-south-1.amazonaws.com/balaji.cinecafe/assets/bmx_logo.png"
+                             id="logoIcon" alt="Balaji Logo" />
                     </NavLink>
                 </div>
             </nav>

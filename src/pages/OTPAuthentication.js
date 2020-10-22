@@ -79,7 +79,8 @@ export default function OTPAuthenticator() {
             <div className="otp-authentication-section">
                 <div className="section-header">
                     <div className="bmx-logo">
-                        <img src="/assets/images/bmx_logo.png" id="logoIcon" alt="Balaji Logo" />
+                        <img src="https://s3.ap-south-1.amazonaws.com/balaji.cinecafe/assets/bmx_logo.png"
+                             id="logoIcon" alt="Balaji Logo" />
                     </div>
                     <div className="section-title">
                         Login

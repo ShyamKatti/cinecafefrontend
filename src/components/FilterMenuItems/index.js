@@ -6,12 +6,24 @@ function FilterMenuItems(props) {
     return (
         <div className="mb-3 filterMenu">
             {/* <p id="filter-text" className="font-weight-bold">Filters: </p> */}
-            <input type="image"  className="btn category-btn p-1 ml-1 mr-1" id="pizzaFilter" src="/assets/images/pizza-slice.png" alt="Pizza Filter" onClick={event => { props.handleEventFilter("Pizza", event) }} />
-            <input type="image"  className="btn category-btn p-1 ml-1 mr-1" id="dessertFilter" src="/assets/images/cake-pop.png " alt="dessert Filter" onClick={event => { props.handleEventFilter("Dessert", event) }} />
-            <input type="image"  className="btn category-btn p-1 ml-1 mr-1" id="sandwichFilter" src="/assets/images/sandwich_1.png " alt="Sandwich Filter" onClick={event => { props.handleEventFilter("Sandwich", event) }} />
-            <input type="image"  className="btn category-btn p-1 ml-1 mr-1" id="wrapsFilter" src="/assets/images/wrap.png " alt="Wraps Filter" onClick={event => { props.handleEventFilter("Wraps", event) }} />
-            <input type="image"  className="btn category-btn p-1 ml-1 mr-1" id="beverageFilter" src="/assets/images/drink.png " alt="Beverage Filter" onClick={event => { props.handleEventFilter("Beverages", event) }} />
-            <input type="image"  className="btn category-btn p-1 ml-1 mr-1" id="popcornFilter" src="/assets/images/popcorn.png " alt="Popcorn Filter" onClick={event => { props.handleEventFilter("Popcorn", event) }} />
+            <input type="image"  className="btn category-btn p-1 ml-1 mr-1" id="pizzaFilter"
+                   src="https://s3.ap-south-1.amazonaws.com/balaji.cinecafe/assets/pizza-slice.png"
+                   alt="Pizza Filter" onClick={event => { props.handleEventFilter("Pizza", event) }} />
+            <input type="image"  className="btn category-btn p-1 ml-1 mr-1" id="dessertFilter"
+                   src="https://s3.ap-south-1.amazonaws.com/balaji.cinecafe/assets/cake-pop.png"
+                   alt="dessert Filter" onClick={event => { props.handleEventFilter("Dessert", event) }} />
+            <input type="image"  className="btn category-btn p-1 ml-1 mr-1" id="sandwichFilter"
+                   src="https://s3.ap-south-1.amazonaws.com/balaji.cinecafe/assets/sandwich_1.png"
+                   alt="Sandwich Filter" onClick={event => { props.handleEventFilter("Sandwich", event) }} />
+            <input type="image"  className="btn category-btn p-1 ml-1 mr-1" id="wrapsFilter"
+                   src="https://s3.ap-south-1.amazonaws.com/balaji.cinecafe/assets/wrap.png"
+                   alt="Wraps Filter" onClick={event => { props.handleEventFilter("Wraps", event) }} />
+            <input type="image"  className="btn category-btn p-1 ml-1 mr-1" id="beverageFilter"
+                   src="https://s3.ap-south-1.amazonaws.com/balaji.cinecafe/assets/drink.png"
+                   alt="Beverage Filter" onClick={event => { props.handleEventFilter("Beverages", event) }} />
+            <input type="image"  className="btn category-btn p-1 ml-1 mr-1" id="popcornFilter"
+                   src="https://s3.ap-south-1.amazonaws.com/balaji.cinecafe/assets/popcorn.png"
+                   alt="Popcorn Filter" onClick={event => { props.handleEventFilter("Popcorn", event) }} />
         </div>
     )
 
