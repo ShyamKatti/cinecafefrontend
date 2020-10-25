@@ -1,6 +1,5 @@
 import React, { PureComponent } from 'react';
 import ItemCard from '../components/ItemCard/index';
-import menuList from "../data/menu.json";
 import FilterMenuItems from '../components/FilterMenuItems';
 import ToggleSwitch from '../components/ToggleSwitch';
 import SearchBox from "../components/SearchBox";
@@ -8,16 +7,21 @@ import NavBar from './NavBar';
 
 
 class MenuItems extends PureComponent {
-    //Default Values
-    state = {
-        menuList,
-        filteredItems: menuList,
-        totalCount: 0,
-        totalAmount: 0,
-        isVeg: false,
-        isFilteredByCategory: false,
-        cartItems: {}
-    };
+    constructor() {
+        super();
+        this.state = {
+            menuList: [],
+            filteredItems: [],
+            totalCount: 0,
+            totalAmount: 0,
+            isVeg: false,
+            isFilteredByCategory: '',
+            cartItems: {},
+            isLoading: false
+        };
+        this.onSuccessMenuLoad = this.onSuccessMenuLoad.bind(this);
+        this.handleLocalStorageUpdates = this.handleLocalStorageUpdates.bind(this);
+    }
 
     onItemQuantityChange = (menuItemId, quantity, menuItemName, menuItemPrice) => {
 
@@ -29,7 +33,7 @@ class MenuItems extends PureComponent {
                 itemQuantity: quantity,
                 itemName: menuItemName,
                 //convert the price to paise 
-                itemPrice: (menuItemPrice * 100)
+                itemPrice: menuItemPrice
             };
         } else {
             delete itemProps[menuItemId];
@@ -42,21 +46,41 @@ class MenuItems extends PureComponent {
         }, 0);
 
         this.setState({ cartItems: itemProps, totalCount: totalItems });
+        localStorage.setItem('cartItems', JSON.stringify(this.state.cartItems));
     };
 
-    componentDidUpdate = () => {
-        console.log("componentDidUpdate");
-        localStorage.setItem('cartItems', JSON.stringify(this.state.cartItems));
-        let totalCost = 0;
-        Object.values(this.state.cartItems).forEach((item) => {
-            totalCost += (item.itemQuantity * item.itemPrice);
+    onSuccessMenuLoad = (loadResponse) => {
+        const fileReader = loadResponse.body.getReader();
+        const textDecoder = new TextDecoder('utf-8');
+        let menuList = [];
+
+        return fileReader.read().then((fileContent) => {
+            const allRows = textDecoder.decode(fileContent.value).split("\n");
+            allRows.forEach(function(rowStr, index) {
+                if (index > 0) {
+                  const rowTokens = rowStr.split(",");
+                  if (rowTokens[6].trim() === 'Y') {
+                    menuList.push({
+                      id: rowTokens[0],
+                      title: rowTokens[1],
+                      category: rowTokens[2],
+                      vegOnly: rowTokens[3] === 'Y',
+                      price: rowTokens[4] * 100,
+                      labels: rowTokens[5].split("|"),
+                      isActive: rowTokens[6] === 'Y'
+                    });
+                  }
+                }
+            });
+            this.setState({
+                menuList: menuList,
+                filteredItems: menuList
+            });
         });
-        this.setState({
-          totalAmount: totalCost / 100
-        });
+
     };
-    componentDidMount = () => {
-        console.log("componentDidMount");
+
+    handleLocalStorageUpdates = () => {
         let localStorageItems = JSON.parse(localStorage.getItem('cartItems'));
         if (localStorageItems === null) { localStorageItems = {}; }
         //Total all items on the icon
@@ -72,62 +96,73 @@ class MenuItems extends PureComponent {
         });
     };
 
+    componentDidUpdate = () => {
+        let totalCost = 0;
+        Object.values(this.state.cartItems).forEach((item) => {
+            totalCost += (item.itemQuantity * item.itemPrice);
+        });
+        this.setState({
+          totalAmount: totalCost / 100
+        });
+    };
+
+    componentDidMount = () => {
+        fetch("./data/menu.csv").then((loadResponse) => {
+            this.onSuccessMenuLoad(loadResponse).then(() => {
+                this.handleLocalStorageUpdates();
+            }).catch((err) => console.warn(err));
+        }).catch((err) => {
+            console.warn(err);
+        });
+    };
+
     //Switch Veg Only ON / OFF
     handleToggle = (e) => {
         let isChecked = e.target.checked;
         this.setState({ checked: isChecked });
         if (isChecked) {
-            let filterArr = menuList.filter(row => row.vegOnly === isChecked);
+            let filterArr = this.state.menuList.filter(row => row.vegOnly === isChecked);
             this.setState({
                 menuList: filterArr,
                 filteredItems: filterArr
-            })
-        } else {
-            //if unchecked, remove from filterArr and unfilter the list
-
-            this.setState({
-                menuList: menuList,
-                filteredItems: menuList
             })
         }
     };
 
     //Based on search filter records 
     handleSearchChange = event => {
-        const filter = event.target.value;
-        const filteredList = this.state.filteredItems.filter(item => {
-            // merge data together, then see if user input is anywhere inside
-            let values = Object.values(item)
-                .join("")
-                .toLowerCase();
-
-            return values.indexOf(filter.toLowerCase()) !== -1;
-        });
-        //reset filter 
-        if (filter === '') {
+        const filter = event.target.value ? event.target.value.toLowerCase() : '';
+        if (filter.length > 1) {
+            const filteredList = this.state.menuList.filter(item => {
+                return item.title.toLowerCase().indexOf(filter) > -1 ||
+                  item.labels.filter(
+                    (label) =>
+                      label.toLowerCase().indexOf(filter) > -1).length > 0
+            });
             this.setState({
-                filteredItems: menuList
+                filteredItems: filteredList
+            });
+        } else if (filter.length === 0){
+            this.setState({
+              filteredItems: this.state.menuList
             });
         } else {
-            this.setState({
-                filteredItems: filteredList, menuList: filteredList
-            });
+            // Do nothing
         }
     };
 
     handleEventFilter = (category) => {
-        if (!this.state.isFilteredByCategory) {
-            let filterArr = menuList.filter(row => row.category === category);
+        if (this.state.isFilteredByCategory.length === 0 || this.state.isFilteredByCategory !== category) {
+            let filterArr = this.state.menuList.filter(row => row.category === category);
             this.setState({
-                menuList: filterArr,
                 filteredItems: filterArr,
-                isFilteredByCategory: true
+                isFilteredByCategory: category
             })
         } else {
             //reset Filter 
             this.setState({
-                filteredItems: menuList,
-                isFilteredByCategory: false
+                filteredItems: this.state.menuList,
+                isFilteredByCategory: ''
             });
         }
     };
@@ -195,7 +230,6 @@ class MenuItems extends PureComponent {
                         {this.handleCategories(this.state.filteredItems)}
                     </div>) : (
                         <div className="menu-items-content">
-                            {/* {console.log("FL ", this.state.filteredItems.length)} */}
                              <h3 className="no-result-message mt-5">No matches found!!!</h3>
                         </div>
                     )

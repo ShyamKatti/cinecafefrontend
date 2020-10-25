@@ -1,0 +1,60 @@
+﻿Item ID,Item name,Item category,Veg?,Price,Labels,Active
+1,Coke 650ml (Coke),beverages,Y,180,coke,Y
+2,Coke 650ml (Thumpsup),beverages,Y,180,coke,Y
+3,Coke 650ml (Fanta/Sprite),beverages,Y,180,coke,Y
+4,Paperboat,beverages,Y,120,paperboat|juice,Y
+5,Appy Fizz,beverages,Y,60,juice|app|jizz,Y
+6,Frooti,beverages,Y,60,frooti|juice,Y
+7,Diet Coke,beverages,Y,60,coke,Y
+8,Minutemaid Pulpy ,beverages,Y,70,juice,Y
+9,Water,beverages,Y,60,water,Y
+10,Redbull,beverages,Y,160,redbull,Y
+11,Cuppacino,beverages,Y,140,cuppacino|coffee,Y
+12,Café Latte,beverages,Y,140,latter|coffee,Y
+13,Black Coffee,beverages,Y,140,coffee,Y
+14,Tea,beverages,Y,140,tea,Y
+15,Magnum Ice Cream,desserts,Y,90,ice|cream|magnum,Y
+16,Pastry,desserts,Y,120,pastry,Y
+17,Indulgent Brownie,desserts,Y,150,brownie,Y
+18,Walnut Brownie,desserts,Y,150,brownie,Y
+19,Death By chocklate,desserts,Y,220,chocolate,Y
+20,Tadaa Sweet Corn,snacks,Y,120,corn|snack,Y
+21,Cheese Corn Nuggets,snacks,Y,160,cheese|corn|nugget|snack,Y
+22,Chilli Potato Bites,snacks,Y,160,potato|snack,Y
+23,French Fries,snacks,Y,160,fries|snack,Y
+24,Chicken Nuggets,snacks,N,180,chicken|nugget|snack,Y
+25,Chicken Cheese Popcorn,snacks,N,200,pop|corn|cheese|chicken,Y
+26,Chicken Fries,snacks,N,160,chicken|fries|snack,Y
+27,Chicken Strip,snacks,N,330,chicken|snack,Y
+28,Veg Momo,snacks,Y,160,momo|snack,Y
+29,Chicken Momo,snacks,N,180,chicken|momo|snack,Y
+30,Hot Dog,snacks,N,170,dog|snack,Y
+31,Veg pizza,pizza,Y,290,pizza|veg,Y
+32,Chicken pizza,pizza,N,350,chicken|pizza,Y
+33,Large cone,concessions,Y,210,concession,Y
+34,Large tub,concessions,Y,250,,Y
+35,Combo1 Nachos,concessions,Y,380,nachos,Y
+36,combo2 Samosa ,concessions,Y,450,samosa,Y
+37,Combo3 450ml,concessions,Y,350,,Y
+38,Combo4 300ml ,concessions,Y,240,,Y
+39,Nachos Cheese,concessions,Y,240,cheese,Y
+40,Nachos Salsa,concessions,Y,240,salsa,Y
+41,Samosa,concessions,Y,90,samosa,Y
+42,Veg Cheese S/W,sandwiches,Y,170,cheese|sandwich,Y
+43,Chilli Toast,sandwiches,Y,170,chilli|toast|sandwich,Y
+44,Veg DD S/W,sandwiches,Y,200,sandwich,Y
+45,Chicken Grill S/W,sandwiches,N,180,chicken|sandwich,Y
+46,Chicken Tikka S/W,sandwiches,N,180,chicken|sandwich,Y
+47,Chicken DD S/W,sandwiches,N,230,chicken|sandwich,Y
+48,Shensha Veg Wrap,wraps,Y,210,wrap|veg,Y
+49,Shakkal Paneer Wrap,wraps,Y,210,wrap|paneer,Y
+50,Gogo Chicken Wrap,wraps,N,210,chicken|wrap,Y
+51,Chatur Chicken Wrap,wraps,N,210,chicken|wrap,Y
+52,Cold Coffee,cooler,Y,160,cooler,Y
+53,Ice Tea,cooler,Y,160,cooler,Y
+54,Jakkas Cooler,cooler,Y,160,cooler,Y
+55,Rajababu Cooler,cooler,Y,160,cooler,Y
+56,Mojito Mint Cooler,cooler,Y,160,cooler,Y
+57,Strawberry Crusher,cooler,Y,160,cooler,Y
+58,Kala Katta Crusher,cooler,Y,160,cooler,Y
+59,Aam Panna,cooler,Y,160,cooler,Y

@@ -40,10 +40,6 @@ class LandingPage extends Component {
         })
     };
 
-    componentDidMount() {
-        localStorage.clear();
-    }
-
     updateBookingId = (value) => {
         this.setState({
             bookingId: value

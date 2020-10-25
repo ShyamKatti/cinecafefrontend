@@ -279,6 +279,9 @@ body {
     font-size: 2.5em;
     margin-left: 0.5em;
     font-weight: 900;
+    &:first-letter {
+      text-transform: capitalize;
+    }
 }
 
 .continue-footer {

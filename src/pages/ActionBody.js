@@ -46,7 +46,6 @@ function SeatServeBody({updateBookingIdCb, updateScreenIdCb, updateSeatNoCb}) {
     };
 
     const updateScreenId = (event) => {
-        console.log(event);
         updateScreenIdCb(event.value);
     };
 
