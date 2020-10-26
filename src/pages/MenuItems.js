@@ -106,7 +106,7 @@ class MenuItems extends PureComponent {
     };
 
     componentDidMount = () => {
-        fetch("./data/menu.csv").then((loadResponse) => {
+        fetch("https://s3.ap-south-1.amazonaws.com/balaji.cinecafe/assets/menu.csv").then((loadResponse) => {
             this.onSuccessMenuLoad(loadResponse).then(() => {
                 this.handleLocalStorageUpdates();
             }).catch((err) => console.warn(err));
