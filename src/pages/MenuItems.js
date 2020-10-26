@@ -32,7 +32,6 @@ class MenuItems extends PureComponent {
                 itemId: menuItemId,
                 itemQuantity: quantity,
                 itemName: menuItemName,
-                //convert the price to paise 
                 itemPrice: menuItemPrice
             };
         } else {
