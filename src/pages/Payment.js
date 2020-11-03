@@ -17,7 +17,7 @@ function loadScript(src) {
     });
 }
 
-export function PaymentGateway({finalAmount}) {
+export function PaymentGateway({finalAmount, phoneNumber}) {
     const [rzOrderId, setRazorOrderId] = useState(null);
 
     useEffect(() => {
@@ -50,7 +50,7 @@ export function PaymentGateway({finalAmount}) {
             amount: (finalAmount * 100).toString(),
             order_id: {rzOrderId},
             name: 'Pay',
-            description: 'Thank you for nothing. Please give us some money',
+            description: 'We thank you for your order!',
             image: 'http://localhost:3001/logo.svg',
             handler: function (response) {
                 alert(response.razorpay_payment_id);
@@ -58,7 +58,7 @@ export function PaymentGateway({finalAmount}) {
                 alert(response.razorpay_signature);
             },
             prefill: {
-                "contact": '8070126608'
+                "contact": phoneNumber
             }
         };
         const paymentObj = new window.Razorpay(options);

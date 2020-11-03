@@ -12,13 +12,12 @@ function Feedback({phoneCheckStatus, otpCheckStatus, errorFeedback}) {
     } else if (phoneCheckStatus === 'Error' || otpCheckStatus === 'Error'){
         return <div className="error-phone-validation">{errorFeedback}</div>;
     } else {
-        return<div />;
+        return <div />;
     }
 }
 
-export default function OTPAuthenticator() {
+export default function OTPAuthenticator({phoneNumber, setPhoneNumber}) {
     const [phoneInputDisabled, setPhoneDisabled] = useState(false);
-    const [phoneNumber, setPhoneNumber] = useState(null);
     const [otpInput, setOtpInput] = useState(null);
     const [btnText, setBtnText] = useState('ENTER');
     const [sessionId, setSessionId] = useState(null);

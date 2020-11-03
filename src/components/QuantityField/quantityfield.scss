@@ -9,6 +9,7 @@
     height: 30px;
     margin-top: 1.85em;
     margin-left: 0.5em;
+    touch-action: manipulation;
 
     .editable-field-add-btn, .editable-field-subtract-btn {
         cursor: pointer;
@@ -17,6 +18,7 @@
         padding-top: 0;
         padding-bottom: 5px;
         outline: none;
+        touch-action: manipulation;
     }
 
     .editable-field-add-btn {
@@ -42,5 +44,4 @@
             margin-left: 2.5rem;
         }
     }
-
 }

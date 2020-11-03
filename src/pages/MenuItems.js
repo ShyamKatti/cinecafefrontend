@@ -4,6 +4,7 @@ import FilterMenuItems from '../components/FilterMenuItems';
 import ToggleSwitch from '../components/ToggleSwitch';
 import SearchBox from "../components/SearchBox";
 import NavBar from './NavBar';
+import foodAppConstants from "../common/urls";
 
 
 class MenuItems extends PureComponent {
@@ -32,6 +33,7 @@ class MenuItems extends PureComponent {
                 itemId: menuItemId,
                 itemQuantity: quantity,
                 itemName: menuItemName,
+                //convert the price to paise 
                 itemPrice: menuItemPrice
             };
         } else {
@@ -106,7 +108,7 @@ class MenuItems extends PureComponent {
     };
 
     componentDidMount = () => {
-        fetch("https://s3.ap-south-1.amazonaws.com/balaji.cinecafe/assets/menu.csv").then((loadResponse) => {
+        fetch(foodAppConstants.services.MENU_URL).then((loadResponse) => {
             this.onSuccessMenuLoad(loadResponse).then(() => {
                 this.handleLocalStorageUpdates();
             }).catch((err) => console.warn(err));

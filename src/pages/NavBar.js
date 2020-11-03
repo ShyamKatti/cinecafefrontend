@@ -5,7 +5,7 @@ import HamburgerMenu from '../components/hamburger-menu/HamburgerMenu';
 
 function NavBar({totalCount, showMenu}) {
     const [totalItemCount] = useState(totalCount);
-    const [cartItemsAdded, setCartItemsAdded] = useState(totalItemCount > 0);
+    const [, setCartItemsAdded] = useState(totalItemCount > 0);
 
     useEffect(() => {
       setCartItemsAdded(totalCount > 0);

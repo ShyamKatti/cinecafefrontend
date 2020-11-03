@@ -1,43 +1,36 @@
 import React, { Component } from 'react';
 import NavBar from './NavBar';
-import ActionBody from './ActionBody';
+import { getData } from "../common/ApiUtils";
+import foodAppConstants from '../common/urls';
 
 
 class LandingPage extends Component {
     state = {
-        showSeatServe: false,
-        showPickOrder: false,
-        chosenScreen: null,
         bookingId: null,
-        screenId: null,
-        seatNo: null,
-        isSubmitDisabled: true
-    };
-
-    handleAuditorium = event => {
-        event.preventDefault();
-
-        this.setState({
-            chosenScreen: event.target.value
-        });
+        isSubmitDisabled: true,
+        isInitOrderReady: false,
+        displayLoading: false,
+        isSubmitClicked: false
     };
 
     handlePickOrderBtn = (event) => {
         event.preventDefault();
 
+        this.props.setSeatDelivery(false);
         this.setState({
-            showSeatServe: false,
-            showPickOrder: true
+          displayLoading: !this.state.isInitOrderReady && !this.state.isSubmitDisabled,
+          isSubmitClicked: true
         });
     };
 
     handleSeatServeBtn = (event) => {
         event.preventDefault();
 
+        this.props.setSeatDelivery(true);
         this.setState({
-            showSeatServe: true,
-            showPickOrder: false
-        })
+          displayLoading: !this.state.isInitOrderReady && !this.state.isSubmitDisabled,
+          isSubmitClicked: true
+        });
     };
 
     updateBookingId = (value) => {
@@ -47,83 +40,60 @@ class LandingPage extends Component {
         this.areDetailsFilled();
     };
 
-    updateScreenId = (value) => {
-        this.setState({
-            screenId: value
-        });
-        this.areDetailsFilled();
-    };
-
-    updateSeatNumber = (value) => {
-        this.setState({
-            seatNo: value
-        });
-        this.areDetailsFilled();
-    };
-
-    setDetails = (event) => {
-        event.preventDefault();
-
-        if (this.state.showPickOrder) {
-            localStorage.setItem("deliveryInfo", JSON.stringify({
-              bookingId: this.state.bookingId,
-              screenId: this.state.screenId
-            }));
+    componentDidUpdate = () => {
+        if (!this.state.displayLoading && this.state.isSubmitClicked) {
             this.props.history.push("/food");
-        } else if (this.state.showSeatServe) {
-            localStorage.setItem("deliveryInfo", JSON.stringify({
-              bookingId: this.state.bookingId,
-              screenId: this.state.screenId,
-              seatNo: this.state.seatNo
-            }));
-            this.props.history.push("/food");
-        } else {
-            // No op
         }
+    };
+
+    componentDidMount = () => {
+        localStorage.clear();
+        getData(foodAppConstants.services.INIT_ORDER, {
+            "cinemaCode": 2
+        }).then(response => {
+            if (response.data) {
+              localStorage.setItem("vistaTransId", response.data[0]);
+              this.setState({
+                isInitOrderReady: true,
+                displayLoading: false
+              });
+            }
+        });
     };
 
     areDetailsFilled = () => {
-        if (this.state.showPickOrder) {
-            this.setState({
-                isSubmitDisabled: this.state.bookingId === null || this.state.screenId === null
-            });
-        } else if (this.state.showSeatServe) {
-            this.setState({
-                isSubmitDisabled: this.state.bookingId === null || this.state.screenId === null ||
-                this.state.seatNo === null
-            });
-        } else {
-            return this.setState({ isSubmitDisabled: true });
-        }
+        return this.setState(
+          {
+            isSubmitDisabled: this.state.bookingId === null || this.state.bookingId.length < 4
+          }
+        );
     };
 
     render() {
         return (
             <div className="main-container">
                 <NavBar showMenu={false} />
-                <div className={!this.state.showSeatServe && !this.state.showPickOrder ? "landing-page-body" : "landing-page-body-hidden"}>
-                    <div className="action-pickup">
-                        <button className={!this.state.showPickOrder ?"btn pickup" : "btn pickup-active"}
-                                onClick={this.handlePickOrderBtn}>Pickup Order</button>
+                <div className={!this.state.displayLoading ? "landing-page-body" : "display-none"}>
+                    <div className="bookingIdRow">
+                        <label className="field-label">Booking ID</label>
+                        <input type="text" maxLength="10"
+                               className="booking-input" onChange={this.updateBookingId} required />
                     </div>
-                    <div className="action-serve">
-                        <button className={!this.state.showSeatServe ?   "btn seat-serve" : "btn seat-serve-active"}
-                                onClick={this.handleSeatServeBtn}>Seat Serve</button>
+                    <div className="action-options">
+                        <div className="action-pickup">
+                            <button className="btn pickup"
+                                    onClick={this.handlePickOrderBtn}>Pickup Order</button>
+                        </div>
+                        <div className="action-serve">
+                            <button className="btn seat-serve"
+                                    onClick={this.handleSeatServeBtn}>Seat Serve</button>
+                        </div>
                     </div>
                 </div>
-                <div className={this.state.showSeatServe || this.state.showPickOrder ? "selected-action-body" : "selected-action-body-hidden"}>
-                    <div className="optionTitleRow">
-                        <h2>Order Details</h2>
-                    </div>
-                    <ActionBody isPickupSelected={ this.state.showPickOrder }
-                                isSeatServeSelected={ this.state.showSeatServe }
-                                updateBookingIdFn = { this.updateBookingId }
-                                updateScreenIdFn = { this.updateScreenId }
-                                updateSeatNoFn = { this.updateSeatNumber }
-                    />
-                    <div className="confirm-btn-row">
-                        <button className=" btn-confirm" onClick={this.setDetails}
-                            disabled={this.state.isSubmitDisabled}>Continue</button>
+                <div className={this.state.displayLoading ? "loading-state" : "display-none"}>
+                    <div className="loading-text">Loading menu...</div>
+                    <div className="spinner-grow" role="status">
+                        <span className="sr-only">Loading...</span>
                     </div>
                 </div>
             </div>
