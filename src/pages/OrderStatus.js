@@ -16,7 +16,6 @@ function OrderStatus({location}) {
       transId: parseInt(location.state.transId),
       phoneNumber: location.state.phoneNumber
     }).then((response) => {
-        console.log(response);
         if (response.status === 200 && response.data) {
           setVistaOrderStatus('ORDER_CONFIRMED');
         } else {

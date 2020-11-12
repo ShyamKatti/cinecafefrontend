@@ -50,10 +50,9 @@ function OrderItems({phoneNumber}) {
 
           Promise.all(allPromises).then(() => {
               setAreItemsAddedToBE(true);
-              console.log("Removing the key cartItems from localStorage");
               localStorage.removeItem("cartItems");
           }).catch((err) => {
-              console.log(err);
+              console.warn(err);
               setAreItemsAddedToBE(false);
           });
         } else {
@@ -100,8 +99,6 @@ function OrderTotal({ totalFinalPrice, phoneNumber }) {
 }
 
 export default function OrderDetails({location}) {
-    console.log("Inside OrderDetails");
-    console.log(location.state.phoneNumber);
     return (
         <div className="order-details-section">
             <div className="order-details-section-header">

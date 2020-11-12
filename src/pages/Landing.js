@@ -68,7 +68,6 @@ class LandingPage extends Component {
     };
 
     updateBookingId = (event) => {
-        console.log(event.currentTarget.value);
         this.setState({
             bookingId: event.currentTarget.value
         });

@@ -45,7 +45,6 @@ export function PaymentGateway({finalAmount, phoneNumber}) {
 
     const handleVistaUpdates = (response) => {
         if (response.razorpay_payment_id) {
-            console.log(response.razorpay_payment_id);
             history.push("/orderstatus", {
                 rzPaymentId: response.razorpay_payment_id,
                 phoneNumber: phoneNumber,
