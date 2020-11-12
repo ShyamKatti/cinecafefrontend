@@ -51,7 +51,9 @@ export default function OTPAuthenticator({phoneNumber, setPhoneNumber}) {
                     sameSite: 'strict',
                     maxAge: 60 * 60
                 });
-                history.push('/checkout/cart')
+                history.push('/checkout/cart', {
+                    phoneNumber: phoneNumber
+                });
             }).catch(function(response) {
                 setOtpCheckStatus('Error');
                 setErrorFeedback('Invalid OTP number provided');

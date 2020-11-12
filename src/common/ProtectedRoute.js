@@ -10,14 +10,14 @@ function useIsPhoneValidated() {
     return !typeUtils.isNullOrUndefined(cookieValue) && cookieValue.length > 0;
 };
 
-export const ProtectedRoute = ({component: Component, ...rest}) => {
+export const ProtectedRoute = ({component: Component, phoneNumber, ...rest}) => {
     const isUserAuthenticated = useIsPhoneValidated();
 
     return <Route
         {...rest}
         render=
             {
-            props => isUserAuthenticated ? (<Component {...props} />) :
+            props => isUserAuthenticated ? (<Component {...rest} />) :
                 (
                     <Redirect to={{
                             pathname: '/auth',

@@ -8,57 +8,75 @@ class LandingPage extends Component {
     state = {
         bookingId: null,
         isSubmitDisabled: true,
-        isInitOrderReady: false,
         displayLoading: false,
-        isSubmitClicked: false
+        loadingStatus: 'Checking booking id...',
+        backendError: false
+    };
+
+    validateAndInitBookingId = () => {
+        getData(foodAppConstants.services.VALIDATE_BOOKING_ID_URL, {
+            bookingId: this.state.bookingId
+        }).then(response => {
+            if (response.data) {
+                if (response.data[0]) {
+                    localStorage.setItem("vistaBookingId", this.state.bookingId);
+                    this.setState({
+                        loadingStatus: 'Loading menu...'
+                    });
+                    getData(foodAppConstants.services.INIT_ORDER, {
+                        "cinemaCode": 2
+                    }).then(response => {
+                        if (response.data) {
+                            localStorage.setItem("vistaTransId", response.data[0]);
+                            this.setState({
+                                displayLoading: false
+                            });
+                            this.props.history.push("/food");
+                        } else {
+                            this.setState({
+                                backendError: true,
+                                displayLoading: false
+                            });
+                        }
+                    }).catch(() => {
+                        this.setState({
+                            backendError: true
+                        });
+                    });
+                }
+            } else {
+                this.setState({
+                    backendError: true,
+                    displayLoading: false
+                });
+            }
+        }).catch(() => {
+            this.setState({
+              backendError: true,
+              displayLoading: false
+            });
+        });
     };
 
     handlePickOrderBtn = (event) => {
         event.preventDefault();
 
-        this.props.setSeatDelivery(false);
         this.setState({
-          displayLoading: !this.state.isInitOrderReady && !this.state.isSubmitDisabled,
-          isSubmitClicked: true
+          displayLoading: true
         });
+        this.validateAndInitBookingId();
     };
 
-    handleSeatServeBtn = (event) => {
-        event.preventDefault();
-
-        this.props.setSeatDelivery(true);
+    updateBookingId = (event) => {
+        console.log(event.currentTarget.value);
         this.setState({
-          displayLoading: !this.state.isInitOrderReady && !this.state.isSubmitDisabled,
-          isSubmitClicked: true
-        });
-    };
-
-    updateBookingId = (value) => {
-        this.setState({
-            bookingId: value
+            bookingId: event.currentTarget.value
         });
         this.areDetailsFilled();
     };
 
-    componentDidUpdate = () => {
-        if (!this.state.displayLoading && this.state.isSubmitClicked) {
-            this.props.history.push("/food");
-        }
-    };
-
     componentDidMount = () => {
         localStorage.clear();
-        getData(foodAppConstants.services.INIT_ORDER, {
-            "cinemaCode": 2
-        }).then(response => {
-            if (response.data) {
-              localStorage.setItem("vistaTransId", response.data[0]);
-              this.setState({
-                isInitOrderReady: true,
-                displayLoading: false
-              });
-            }
-        });
     };
 
     areDetailsFilled = () => {
@@ -79,14 +97,13 @@ class LandingPage extends Component {
                         <input type="text" maxLength="10"
                                className="booking-input" onChange={this.updateBookingId} required />
                     </div>
+                    <div className={this.state.backendError ? "show-error" : "display-none"}>
+                        <span className="error-text">Please check your booking id</span>
+                    </div>
                     <div className="action-options">
                         <div className="action-pickup">
                             <button className="btn pickup"
                                     onClick={this.handlePickOrderBtn}>Pickup Order</button>
-                        </div>
-                        <div className="action-serve">
-                            <button className="btn seat-serve"
-                                    onClick={this.handleSeatServeBtn}>Seat Serve</button>
                         </div>
                     </div>
                 </div>

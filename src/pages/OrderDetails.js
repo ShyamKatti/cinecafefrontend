@@ -5,25 +5,9 @@ import { PaymentGateway } from './Payment';
 import foodAppConstants from '../common/urls';
 import {postData} from "../common/ApiUtils";
 
-function handleSubtract(event, setQuantity) {
-    event.preventDefault();
-    setQuantity((prevState) => {
-        if (prevState > 0) {
-            return prevState - 1;
-        } else {
-            return 0;
-        }
-    });
-}
-
-function handleAdd(event, setQuantity) {
-    event.preventDefault();
-    setQuantity((prevState) => prevState + 1);
-}
-
 
 function OrderItem({ singleOrderItem, setTotalFinalPrice }) {
-    const [quantity, setQuantity] = useState(singleOrderItem.itemQuantity);
+    const quantity = singleOrderItem.itemQuantity;
     const price = singleOrderItem.itemPrice;
     const totalPrice = useFinalItemAmount(quantity, price, setTotalFinalPrice, singleOrderItem);
 
@@ -33,24 +17,8 @@ function OrderItem({ singleOrderItem, setTotalFinalPrice }) {
                 {singleOrderItem.itemName}
             </div>
             <div className="order-edit-quantity">
-                <button id={'subtract-quantity-' + singleOrderItem.itemId}
-                    className="glyphicon glyphicon-minus subtract-button"
-                    onClick={(event) => handleSubtract(
-                        event,
-                        setQuantity
-                    )}>
-                </button>
-                <input id={'input-quantity-' + singleOrderItem.itemId} type="number"
-                    min="0" max="10" value={quantity} className="input-quantity-field" readOnly/>
-                <button id={'add-quantity-' + singleOrderItem.itemId}
-                    className="glyphicon glyphicon-plus add-button"
-                    onClick={(event) => {
-                        handleAdd(
-                            event,
-                            setQuantity, singleOrderItem
-                        )
-                    }}>
-                </button>
+              <label id={'input-quantity-' + singleOrderItem.itemId}
+                     className="input-quantity-label">{quantity}</label>
             </div>
             <div className="order-total-price">{totalPrice}</div>
         </div>
@@ -70,18 +38,20 @@ function OrderItems({phoneNumber}) {
           setCartItems(storageItemsInJSON);
 
           storageItemsInJSON && Object.values(storageItemsInJSON).forEach((item) => {
-              console.log("Adding item id: " + item.itemId + ", quantity: " + item.itemQuantity);
-              allPromises.push(
-                postData(foodAppConstants.services.ADD_ITEM, {
-                  transId: localStorage.getItem("vistaTransId"),
-                  itemId: item.itemId,
-                  itemQuantity: item.itemQuantity
+              allPromises.push(postData(
+                foodAppConstants.services.ADD_ITEM,
+                {
+                    transId: localStorage.getItem("vistaTransId"),
+                    itemId: item.itemId,
+                    itemQuantity: item.itemQuantity
                 })
-              )
+              );
           });
 
-          Promise.all(allPromises).then((response) => {
+          Promise.all(allPromises).then(() => {
               setAreItemsAddedToBE(true);
+              console.log("Removing the key cartItems from localStorage");
+              localStorage.removeItem("cartItems");
           }).catch((err) => {
               console.log(err);
               setAreItemsAddedToBE(false);
@@ -129,15 +99,16 @@ function OrderTotal({ totalFinalPrice, phoneNumber }) {
     )
 }
 
-export default function OrderDetails({seatDelivery, phoneNumber}) {
-
+export default function OrderDetails({location}) {
+    console.log("Inside OrderDetails");
+    console.log(location.state.phoneNumber);
     return (
         <div className="order-details-section">
             <div className="order-details-section-header">
                 <div className="section-title">Order Details</div>
                 <div className="section-subtitle">Finalize the cart before payment</div>
             </div>
-            <OrderItems phoneNumber={phoneNumber} />
+            <OrderItems phoneNumber={location.state.phoneNumber} />
         </div>
     )
 }
