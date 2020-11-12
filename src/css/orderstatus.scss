@@ -1,0 +1,79 @@
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}
+
+.order-status{
+  display: flex;
+  flex-flow: column nowrap;
+  width: 100vw;
+  height: 100vh;
+
+  .section-header {
+    display: flex;
+    min-height: 25vh;
+    flex-flow: column nowrap;
+    align-items: flex-start;
+    color: #282c3f;
+    background-color: #F2F4F9;
+    justify-content: flex-start;
+
+    .bmx-logo {
+      margin-left: 36vw;
+      margin-top: 1rem;
+      img {
+        width: 26vw;
+        height: 8vh;
+      }
+    }
+
+    .section-title {
+      font-size: 2em;
+      padding-left: 1em;
+      text-transform: uppercase;
+      font-weight: bold;
+      margin-top: 10vh;
+    }
+  }
+
+  .section-body {
+    font-size: 1.5rem;
+    margin-top: 1rem;
+
+    .user-notice-message {
+      font-weight: 500;
+      margin-bottom: 2rem;
+    }
+
+    .razorpay-details {
+      margin-bottom: 1rem;
+      .razorpay-id {
+        font-size: 2rem;
+        font-weight: bold;
+        color: green;
+      }
+    }
+
+    .vista-order-status {
+      .order-status-success {
+        animation: blinker 1s linear infinite;
+        font-size: 2rem;
+        color: green;
+        font-weight: bold;
+      }
+
+      .order-status-failed {
+        animation: blinker 1s linear infinite;
+        font-size: 2rem;
+        color: red;
+        font-weight: bold;
+      }
+
+      .rz-refund-message {
+        font-size: 1rem;
+        font-weight: bold;
+      }
+    }
+  }
+}
