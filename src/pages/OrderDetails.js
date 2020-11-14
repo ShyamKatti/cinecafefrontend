@@ -4,6 +4,7 @@ import '../css/orderdetails.scss';
 import { PaymentGateway } from './Payment';
 import foodAppConstants from '../common/urls';
 import {postData} from "../common/ApiUtils";
+import {useHistory} from "react-router-dom";
 
 
 function OrderItem({ singleOrderItem, setTotalFinalPrice }) {
@@ -29,32 +30,39 @@ function OrderItems({phoneNumber}) {
     const [cartItems, setCartItems] = useState({});
     const [totalFinalPrice, setTotalFinalPrice] = useState(0);
     const [areItemsAddedToBE, setAreItemsAddedToBE] = useState(false);
+    const history = useHistory();
 
     useEffect(() => {
-        let allPromises = [];
+        let allItems = [];
         const localStorageItems = localStorage.getItem("cartItems");
         if (localStorageItems !== undefined || localStorageItems !== null) {
           const storageItemsInJSON = JSON.parse(localStorageItems);
           setCartItems(storageItemsInJSON);
 
           storageItemsInJSON && Object.values(storageItemsInJSON).forEach((item) => {
-              allPromises.push(postData(
-                foodAppConstants.services.ADD_ITEM,
-                {
-                    transId: localStorage.getItem("vistaTransId"),
-                    itemId: item.itemId,
-                    itemQuantity: item.itemQuantity
-                })
-              );
+              allItems.push({
+                itemId: item.itemId,
+                itemQuantity: item.itemQuantity
+              });
           });
 
-          Promise.all(allPromises).then(() => {
-              setAreItemsAddedToBE(true);
-              localStorage.removeItem("cartItems");
-          }).catch((err) => {
-              console.warn(err);
-              setAreItemsAddedToBE(false);
-          });
+          if (allItems) {
+            const addItemPromise = postData(
+              foodAppConstants.services.ADD_ITEM,
+              {
+                transId: localStorage.getItem("vistaTransId"),
+                items: allItems
+              });
+            addItemPromise.then(() => {
+                setAreItemsAddedToBE(true);
+                localStorage.removeItem("cartItems");
+            }).catch((err) => {
+                console.warn(err);
+                setAreItemsAddedToBE(false);
+            });
+          } else {
+              history.push("/");
+          }
         } else {
           setCartItems({});
           setAreItemsAddedToBE(true);
