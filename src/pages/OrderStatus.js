@@ -30,7 +30,10 @@ function OrderStatus({location}) {
     }).catch((err) => {
         console.warn(err);
         console.warn("Something went wrong when finalizing the order");
-        setVistaOrderStatus('ORDER_CANCELLED_2');
+        setVistaOrderStatus('ORDER_CONFIRMED');
+        getData(foodAppConstant.services.NOTIFY_VENDOR_URL, {
+            phone: location.state.phoneNumber
+        });
         localStorage.clear();
 
     });
