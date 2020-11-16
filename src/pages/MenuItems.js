@@ -108,6 +108,7 @@ class MenuItems extends PureComponent {
     };
 
     componentDidMount = () => {
+        localStorage.removeItem("vistaTransId");
         fetch(foodAppConstants.services.MENU_URL).then((loadResponse) => {
             this.onSuccessMenuLoad(loadResponse).then(() => {
                 this.handleLocalStorageUpdates();

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {getData} from '../common/ApiUtils';
 import foodAppConstants from '../common/urls';
 import {useCookies, CookiesProvider} from 'react-cookie';
@@ -25,6 +25,7 @@ export default function OTPAuthenticator({phoneNumber, setPhoneNumber}) {
     const [otpCheckStatus, setOtpCheckStatus] = useState(null);
     const [errorFeedback, setErrorFeedback] = useState('');
     const [, setCookie] = useCookies(['_sessionId']);
+    const [displayLoading, setDisplayLoading] = useState(false);
     let history = useHistory();
 
     const handleChange = (event) => {
@@ -75,9 +76,27 @@ export default function OTPAuthenticator({phoneNumber, setPhoneNumber}) {
         }
     };
 
+    useEffect(() => {
+        localStorage.removeItem("vistaTransId");
+        setDisplayLoading(true);
+        getData(foodAppConstants.services.INIT_ORDER, {
+            "cinemaCode": 2
+        }).then(response => {
+            if (response.data) {
+                localStorage.setItem("vistaTransId", response.data[0]);
+                setDisplayLoading(false);
+                this.props.history.push("/checkout/cart");
+            } else {
+                setDisplayLoading(false);
+            }
+        }).catch(() => {
+            setDisplayLoading(false);
+        });
+    }, []);
+
     return (
         <CookiesProvider>
-            <div className="otp-authentication-section">
+            <div className={!displayLoading ? "otp-authentication-section" : "display-none"}>
                 <div className="section-header">
                     <div className="bmx-logo">
                         <img src="https://s3.ap-south-1.amazonaws.com/balaji.cinecafe/assets/bmx_logo.png"
@@ -106,6 +125,12 @@ export default function OTPAuthenticator({phoneNumber, setPhoneNumber}) {
                                 onClick={onSubmit}>{btnText}</button>
                     </form>
                     <Feedback phoneCheckStatus={phoneCheckStatus} otpCheckStatus={otpCheckStatus} errorFeedback={errorFeedback} />
+                </div>
+            </div>
+            <div className={displayLoading ? "loading-state" : "display-none"}>
+                <div className="loading-text">Starting your order process...</div>
+                <div className="spinner-grow" role="status">
+                    <span className="sr-only">Loading...</span>
                 </div>
             </div>
         </CookiesProvider>

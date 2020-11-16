@@ -23,26 +23,7 @@ class LandingPage extends Component {
                     this.setState({
                         loadingStatus: 'Loading menu...'
                     });
-                    getData(foodAppConstants.services.INIT_ORDER, {
-                        "cinemaCode": 2
-                    }).then(response => {
-                        if (response.data) {
-                            localStorage.setItem("vistaTransId", response.data[0]);
-                            this.setState({
-                                displayLoading: false
-                            });
-                            this.props.history.push("/food");
-                        } else {
-                            this.setState({
-                                backendError: true,
-                                displayLoading: false
-                            });
-                        }
-                    }).catch(() => {
-                        this.setState({
-                            backendError: true
-                        });
-                    });
+
                 }
             } else {
                 this.setState({

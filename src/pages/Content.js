@@ -15,8 +15,7 @@ export default function Content() {
         <div className="checkout-content">
             <BrowserRouter>
                 <Switch>
-                    <Route exact path="/" component={Landing} />
-                    <Route exact path="/food" component={MenuItems} />
+                    <Route exact path="/" component={MenuItems} />
                     <Route exact path="/auth"
                            render={(props) => <OTPAuthenticator {...props}
                                                     phoneNumber={phoneNumber}

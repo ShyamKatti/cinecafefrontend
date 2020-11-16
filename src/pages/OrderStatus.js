@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import {postData} from "../common/ApiUtils";
+import {postData, getData} from "../common/ApiUtils";
 import foodAppConstant from "../common/urls";
 import "../css/orderstatus.scss";
 
@@ -16,16 +16,20 @@ function OrderStatus({location}) {
       transId: parseInt(location.state.transId),
       phoneNumber: location.state.phoneNumber
     }).then((response) => {
-        console.log(response);
         if (response.status === 200) {
           setVistaOrderStatus('ORDER_CONFIRMED');
+          getData(foodAppConstant.services.NOTIFY_VENDOR_URL, {
+            phone: location.state.phoneNumber
+          });
         } else {
           setVistaOrderStatus('ORDER_CANCELLED');
         }
+        localStorage.clear();
     }).catch((err) => {
         console.warn(err);
         console.warn("Something went wrong when finalizing the order");
         setVistaOrderStatus('ORDER_CANCELLED');
+        localStorage.clear();
 
     });
   }, [location]);
@@ -40,7 +44,7 @@ function OrderStatus({location}) {
     } else if (vistaOrderStatus === 'ORDER_CONFIRMED') {
       setUserOrderMessage('Order confirmed');
     } else if (vistaOrderStatus === 'ORDER_CANCELLED') {
-      setUserOrderMessage('Order cancelled');
+      setUserOrderMessage('Order has been cancelled');
     }
   }, [vistaOrderStatus])
 

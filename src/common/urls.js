@@ -9,6 +9,7 @@ const foodAppConstants = {
         PLACE_ORDER: "https://api.bmxcinemas.com/vista/placeorder",
         DELIVERY_URL: "https://api.bmxcinemas.com/vista/delivery",
         VALIDATE_BOOKING_ID_URL: "https://api.bmxcinemas.com/vista/validate",
+        NOTIFY_VENDOR_URL: "https://api.bmxcinemas.com/order/notify",
         MENU_URL: "https://s3.ap-south-1.amazonaws.com/balaji.cinecafe/assets/menu.csv"
     }
 };

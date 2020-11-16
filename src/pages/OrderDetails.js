@@ -110,6 +110,10 @@ export default function OrderDetails({location}) {
     return (
         <div className="order-details-section">
             <div className="order-details-section-header">
+                <div className="bmx-logo">
+                    <img src="https://s3.ap-south-1.amazonaws.com/balaji.cinecafe/assets/bmx_logo.png"
+                             id="logoIcon" alt="Balaji Logo" />
+                </div>
                 <div className="section-title">Order Details</div>
                 <div className="section-subtitle">Finalize the cart before payment</div>
             </div>
