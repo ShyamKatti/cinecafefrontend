@@ -16,12 +16,14 @@ function OrderStatus({location}) {
       transId: parseInt(location.state.transId),
       phoneNumber: location.state.phoneNumber
     }).then((response) => {
-        if (response.status === 200 && response.data) {
+        console.log(response);
+        if (response.status === 200) {
           setVistaOrderStatus('ORDER_CONFIRMED');
         } else {
           setVistaOrderStatus('ORDER_CANCELLED');
         }
     }).catch((err) => {
+        console.warn(err);
         console.warn("Something went wrong when finalizing the order");
         setVistaOrderStatus('ORDER_CANCELLED');
 
