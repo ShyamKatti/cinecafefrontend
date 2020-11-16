@@ -9,6 +9,7 @@ function OrderStatus({location}) {
   const [vistaOrderStatus, setVistaOrderStatus] = useState('ORDER_PLACED');
   const [userOrderMessage, setUserOrderMessage] = useState('');
   const [orderFailed, setOrderFailed] = useState(vistaOrderStatus === 'ORDER_CANCELLED');
+  let status_code = 0;
 
   useEffect(() => {
     postData(foodAppConstant.services.PLACE_ORDER, {
@@ -16,19 +17,20 @@ function OrderStatus({location}) {
       transId: parseInt(location.state.transId),
       phoneNumber: location.state.phoneNumber
     }).then((response) => {
+        status_code = response.status;
         if (response.status === 200) {
           setVistaOrderStatus('ORDER_CONFIRMED');
           getData(foodAppConstant.services.NOTIFY_VENDOR_URL, {
             phone: location.state.phoneNumber
           });
         } else {
-          setVistaOrderStatus('ORDER_CANCELLED');
+          setVistaOrderStatus('ORDER_CANCELLED_1');
         }
         localStorage.clear();
     }).catch((err) => {
         console.warn(err);
         console.warn("Something went wrong when finalizing the order");
-        setVistaOrderStatus('ORDER_CANCELLED');
+        setVistaOrderStatus('ORDER_CANCELLED_2');
         localStorage.clear();
 
     });
@@ -43,8 +45,10 @@ function OrderStatus({location}) {
       setUserOrderMessage('Payment received');
     } else if (vistaOrderStatus === 'ORDER_CONFIRMED') {
       setUserOrderMessage('Order confirmed');
-    } else if (vistaOrderStatus === 'ORDER_CANCELLED') {
-      setUserOrderMessage('Order has been cancelled');
+    } else if (vistaOrderStatus === 'ORDER_CANCELLED_1') {
+      setUserOrderMessage('Order has been cancelled ' + status_code);
+    } else if (vistaOrderStatus === 'ORDER_CANCELLED_2') {
+      setUserOrderMessage('Bombed completely');
     }
   }, [vistaOrderStatus])
 
