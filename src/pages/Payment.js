@@ -65,7 +65,7 @@ export function PaymentGateway({finalAmount, phoneNumber}) {
         }
 
         const options = {
-            key: 'rzp_test_ITacyB3nw8PBvM',
+            key: 'rzp_live_A3vBCy47EkfdUd',
             currency: 'INR',
             amount: (finalAmount * 100).toString(),
             order_id: {rzOrderId},
